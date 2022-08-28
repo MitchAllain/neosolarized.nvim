@@ -549,13 +549,15 @@ function M.setup(opts)
 	for _, lsp in pairs({ "Error", "Warning", "Information", "Hint" }) do
 		local lspGroup = Group.new(M.translate("LspDiagnosticsDefault" .. lsp), lspColors[lsp])
 		Group.link(M.translate("LspDiagnosticsVirtualText" .. lsp), lspGroup)
-		Group.new(
-			M.translate("LspDiagnosticsUnderline" .. lsp),
-			colors.none,
-			colors.none,
-			styles.undercurl,
-			lspColors[lsp]
-		)
+        Group.new(
+        	M.translate("LspDiagnosticsUnderline" .. lsp),
+        	colors.none,
+        	colors.none,
+        	styles.underline,
+        	-- styles.undercurl -- undercurl not working well on 18.04
+        	lspColors[lsp]
+        )
+
 	end
 
 	for _, name in pairs({ "LspReferenceText", "LspReferenceRead", "LspReferenceWrite" }) do
